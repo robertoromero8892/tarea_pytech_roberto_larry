@@ -7,6 +7,7 @@ Modificacion del codigo legado por FragantSoft.
 from decimal import Decimal
 from datetime import timedelta
 
+
 # Maneja una tasa para los dias de semana y otra para los fines de semana. 
 class Tarifa(object):
     def __init__(self, tasaDiaSemana, tasaFinSemana):
@@ -45,7 +46,10 @@ def calcularPrecio(tarifa, tiempoDeReservacionr):
             minutosNormales*tarifa.tasaDiaSemana/60 +
             minutosFinDeSemana*tarifa.tasaFinSemana/60
         ).quantize(Decimal('1.00'))
-        
-        
-if __name__ == '__main__':
-    pass
+          
+ 
+if __name__ == "__main__":
+    pass      
+ 
+
+    
