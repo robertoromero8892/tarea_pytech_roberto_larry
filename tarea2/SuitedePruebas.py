@@ -28,7 +28,7 @@ class Test(unittest.TestCase):
             tari = Tarifa (1,1)
             tiempo = [datetime(year=2015,month=1,day=1),datetime(year=2015,month=1,day=8,second=1)]
             self.assertRaises(Exception,calcularPrecio,tari,tiempo) 
-
+        #culquiervaina
         def testMinTiempo(self):
             tari = Tarifa (1,1)
             tiempo = [datetime(year=2015,month=1,day=1),datetime(year=2015,month=1,day=1,minute=14,second=59)]
