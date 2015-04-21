@@ -12,6 +12,7 @@ from tarea2 import Tarifa, calcularPrecio
 
 class Test(unittest.TestCase):
     
+    
         def testTarifaCero(self):
             tari = Tarifa (0,0)
             tiempo = [datetime(year=2015,month=1,day=1),datetime(year=2015,month=1,day=3)]
