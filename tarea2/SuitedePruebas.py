@@ -19,7 +19,7 @@ class Test(unittest.TestCase):
             assert resultado == 0.00    
         
         def testTarifaMax(self):
-            tari = Tarifa (4294967295,4294967295)
+            tari = Tarifa (257698037700,257698037700)
             tiempo = [datetime(year=2015,month=1,day=1),datetime(year=2015,month=1,day=8)]
             calcularPrecio(tari,tiempo)
             
@@ -32,7 +32,11 @@ class Test(unittest.TestCase):
             tari = Tarifa (1,1)
             tiempo = [datetime(year=2015,month=1,day=1),datetime(year=2015,month=1,day=1,minute=14,second=59)]
             self.assertRaises(Exception,calcularPrecio,tari,tiempo) 
-            
+        
+        #tests maliciosos
+        
+        def testLetras(self):
+            calcularPrecio('a','b')   
         
 if __name__ == "__main__":
     unittest.main()      
