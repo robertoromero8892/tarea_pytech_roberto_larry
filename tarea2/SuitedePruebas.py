@@ -11,7 +11,6 @@ from datetime import datetime
 from tarea2 import Tarifa, calcularPrecio 
 
 class Test(unittest.TestCase):
-    #aa
     
         def testTarifaCero(self):
             tari = Tarifa (0,0)
@@ -23,7 +22,13 @@ class Test(unittest.TestCase):
             tari = Tarifa (257698037700,257698037700)
             tiempo = [datetime(year=2015,month=1,day=1),datetime(year=2015,month=1,day=8)]
             calcularPrecio(tari,tiempo)
-            
+        
+        def test7Dias(self):
+            tari = Tarifa (1,1)
+            tiempo = [datetime(year=2015,month=1,day=1),datetime(year=2015,month=1,day=8)]
+            resultado = calcularPrecio(tari,tiempo)
+            assert resultado == 168.00 
+                
         def testMaxDias(self):
             tari = Tarifa (1,1)
             tiempo = [datetime(year=2015,month=1,day=1),datetime(year=2015,month=1,day=8,second=1)]
@@ -37,7 +42,28 @@ class Test(unittest.TestCase):
         #tests maliciosos
         
         def testLetras(self):
-            calcularPrecio('a','b')   
+            tari = Tarifa ('a','b')
+            tiempo = [datetime(year=2015,month=1,day=1),datetime(year=2015,month=1,day=8)]
+            calcularPrecio(tari,tiempo) 
+            
+        def testTarifaNoEntera(self):
+            tari = Tarifa (1.5,1.5)
+            tiempo = [datetime(year=2015,month=1,day=1,hour=1),datetime(year=2015,month=1,day=1,hour=2)]
+            print(calcularPrecio(tari,tiempo))  
+            resultado = calcularPrecio(tari,tiempo)
+            assert resultado == 1.50
+
+        def testFraccionesHora(self):
+            tari = Tarifa (1,2)
+            tiempo = [datetime(year=2015,month=1,day=1),datetime(year=2015,month=1,day=1,hour=1,minute=1)]
+            resultado = calcularPrecio(tari,tiempo)
+            assert resultado == 2.00
+            
+        def testNegativos(self):
+            tari = Tarifa (-1,-1)
+            tiempo = [datetime(year=2015,month=1,day=1),datetime(year=2015,month=1,day=3)]
+            self.assertRaises(Exception,calcularPrecio,tari,tiempo)
+            
         
 if __name__ == "__main__":
     unittest.main()      
